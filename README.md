@@ -6,3 +6,4 @@ A repo for my dotfiles in case my house burns down and or my laptop fails.
 - prettier
 - tslint
 - eslint
+- git hooks
