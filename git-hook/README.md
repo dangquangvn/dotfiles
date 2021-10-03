@@ -32,6 +32,8 @@ At the root of your git project, this one-liner can set up it all:
 
 ```
 cd .git/hooks/ && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/commit-msg && curl -O https://raw.githubusercontent.com/Buzut/git-emojis-hook/master/prepare-commit-msg && chmod +x * || exit 0
+or
+cd .git/hooks/ && curl -O https://raw.githubusercontent.com/dangquangvn/dotfiles/main/git-hook/commit-msg && curl -O https://raw.githubusercontent.com/dangquangvn/dotfiles/main/git-hook/prepare-commit-msg && chmod +x * || exit 0
 ```
 Also, it might be handy to place the two files in a directory within your home and add a bash alias to automate the deploy.
 
