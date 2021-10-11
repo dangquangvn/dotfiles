@@ -33,7 +33,7 @@ else
   IFS="-" read -a BRANCH_NAME_FILTER_MINUS <<< ${BRANCH_NAME_FILTER_SLASH[1]}
 fi
 
-if [[ $TICKET == "[]" || "$MESSAGE" == "$TICKET"* || $BRANCH_NAME != '(no branch)' ]];then
+if [[ $TICKET == "[]" || "$MESSAGE" == "$TICKET"* || $BRANCH_NAME == '(no branch)' ]];then
   exit 0;
 fi
 
@@ -44,3 +44,4 @@ fi
 # use name with 2 items:
 # Ex: feat/anhemta-cuoc1-song-ma -> anhemta-cuoc1
 echo "[${BRANCH_NAME_FILTER_MINUS[0]^^}-${BRANCH_NAME_FILTER_MINUS[1]^^}] $MESSAGE" > $FILE
+#echo "[$BRANCH_NAME] $MESSAGE" > $FILE
