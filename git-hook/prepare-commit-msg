@@ -23,8 +23,24 @@ fi
 FILE=$1
 MESSAGE=$(cat $FILE)
 TICKET=[$(git rev-parse --abbrev-ref HEAD | grep -Eo '^(\w+/)?(\w+)' | grep -Eo '(\w+$)' | tr "[:lower:]" "[:upper:]")]
-if [[ $TICKET == "[]" || "$MESSAGE" == "$TICKET"* ]];then
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+BRANCH_NAME_TO_CHECK_REBASE=$(git branch | grep '*' | sed 's/* //')
+IFS="/" read -a BRANCH_NAME_FILTER_SLASH <<< $BRANCH_NAME
+if [ -v ${BRANCH_NAME_FILTER_SLASH[1]} ];
+then
+  IFS="-" read -a BRANCH_NAME_FILTER_MINUS <<< ${BRANCH_NAME_FILTER_SLASH[0]};
+else
+  IFS="-" read -a BRANCH_NAME_FILTER_MINUS <<< ${BRANCH_NAME_FILTER_SLASH[1]}
+fi
+
+if [[ $TICKET == "[]" || "$MESSAGE" == "$TICKET"* || $BRANCH_NAME != '(no branch)' ]];then
   exit 0;
 fi
 
-echo "$TICKET $MESSAGE" > $FILE
+# use name with 1 items:
+# # Ex: feat/anhemta-cuoc1-song-ma -> anhemta
+# echo "[${BRANCH_NAME_FILTER_MINUS[0]^^}] $MESSAGE" > $FILE
+
+# use name with 2 items:
+# Ex: feat/anhemta-cuoc1-song-ma -> anhemta-cuoc1
+echo "[${BRANCH_NAME_FILTER_MINUS[0]^^}-${BRANCH_NAME_FILTER_MINUS[1]^^}] $MESSAGE" > $FILE
