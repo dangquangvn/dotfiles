@@ -2,20 +2,20 @@
 
 msg=`cat $1`
 
-msg=`echo "$msg" | sed 's/tada/🎉/'`
-msg=`echo "$msg" | sed 's/revert/⏳revert/'`
-msg=`echo "$msg" | sed 's/build/📦build/'`
-msg=`echo "$msg" | sed 's/ci/🤖ci/'`
-msg=`echo "$msg" | sed 's/docs/📖docs/'`
-msg=`echo "$msg" | sed 's/feat/🌟feat/'`
-msg=`echo "$msg" | sed 's/fix/🐞fix/'`
-msg=`echo "$msg" | sed 's/hotfix/🚑hotfix/'`
-msg=`echo "$msg" | sed 's/perf/⚡perf/'`
-msg=`echo "$msg" | sed 's/refactor/🚧refactor/'`
-msg=`echo "$msg" | sed 's/style/💄style/'`
-msg=`echo "$msg" | sed 's/deploy/🚀deploy/'`
-msg=`echo "$msg" | sed 's/remove/🔥remove/'`
-msg=`echo "$msg" | sed 's/format/🎨format/'`
-msg=`echo "$msg" | sed 's/fixtypo/✏️fix/'`
+msg=`echo "$msg" | sed 's/:tada/🎉/'`
+msg=`echo "$msg" | sed 's/:revert/⏳revert/'`
+msg=`echo "$msg" | sed 's/:build/📦build/'`
+msg=`echo "$msg" | sed 's/:ci/🤖ci/'`
+msg=`echo "$msg" | sed 's/:docs/📖docs/'`
+msg=`echo "$msg" | sed 's/:feat/🌟feat/'`
+msg=`echo "$msg" | sed 's/:fix/🐞fix/'`
+msg=`echo "$msg" | sed 's/:hotfix/🚑hotfix/'`
+msg=`echo "$msg" | sed 's/:perf/⚡perf/'`
+msg=`echo "$msg" | sed 's/:refactor/🚧refactor/'`
+msg=`echo "$msg" | sed 's/:style/💄style/'`
+msg=`echo "$msg" | sed 's/:deploy/🚀deploy/'`
+msg=`echo "$msg" | sed 's/:remove/🔥remove/'`
+msg=`echo "$msg" | sed 's/:format/🎨format/'`
+msg=`echo "$msg" | sed 's/:fixtypo/✏️fix/'`
 
 echo "$msg" > $1
