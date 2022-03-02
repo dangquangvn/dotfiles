@@ -24,7 +24,7 @@ FILE=$1
 MESSAGE=$(cat $FILE)
 TICKET=[$(git rev-parse --abbrev-ref HEAD | grep -Eo '^(\w+/)?(\w+)' | grep -Eo '(\w+$)' | tr "[:lower:]" "[:upper:]")]
 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
-BRANCH_NAME_TO_CHECK_REBASE=$(git branch | grep '*' | sed 's/* //')
+BRANCH_NAME_TO_CHECK_REBASE=$((git branch | grep '*' | sed 's/* //') | grep -Eo '(no branch)')
 IFS="/" read -a BRANCH_NAME_FILTER_SLASH <<< $BRANCH_NAME
 if [ -v ${BRANCH_NAME_FILTER_SLASH[1]} ];
 then
@@ -33,7 +33,7 @@ else
   IFS="-" read -a BRANCH_NAME_FILTER_MINUS <<< ${BRANCH_NAME_FILTER_SLASH[1]}
 fi
 
-if [[ $TICKET == "[]" || "$MESSAGE" == "$TICKET"* || $BRANCH_NAME == '(no branch)' ]];then
+if [[ $TICKET == "[]" || "$MESSAGE" == "$TICKET"* || $BRANCH_NAME_TO_CHECK_REBASE == 'no branch' ]];then
   exit 0;
 fi
 
